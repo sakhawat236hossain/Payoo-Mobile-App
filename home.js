@@ -134,19 +134,19 @@ document.getElementById('transfer-btutton')
 })
 
 // bounas
-// document.getElementById('bonus-button')
-// .addEventListener('click', function(){
-//     document.getElementById('Cash-out-parent').style.display='none'
-//   document.getElementById('add-money-parent').style.display = 'none'
-//   document.getElementById('transfer-money-parent').style.display= 'none'
-//   document.getElementById('coupone-parent').style.display = 'block'
-// })
-    //  pay bill 
-// document.getElementById('pay-button')
-// .addEventListener('click', function(){
-//     document.getElementById('Cash-out-parent').style.display='none'
-//   document.getElementById('add-money-parent').style.display = 'none'
-//   document.getElementById('transfer-money-parent').style.display= 'none'
-//   document.getElementById('coupone-parent').style.display = 'none'
-//   document.getElementById('Pay-Bill-parent').style.display = 'block'
-// })
+document.getElementById('bonus-button')
+.addEventListener('click', function(){
+    document.getElementById('Cash-out-parent').style.display='none'
+  document.getElementById('add-money-parent').style.display = 'none'
+  document.getElementById('transfer-money-parent').style.display= 'none'
+  document.getElementById('coupone-parent').style.display = 'block'
+})
+     pay bill 
+document.getElementById('pay-button')
+.addEventListener('click', function(){
+    document.getElementById('Cash-out-parent').style.display='none'
+  document.getElementById('add-money-parent').style.display = 'none'
+  document.getElementById('transfer-money-parent').style.display= 'none'
+  document.getElementById('coupone-parent').style.display = 'none'
+  document.getElementById('Pay-Bill-parent').style.display = 'block'
+})
