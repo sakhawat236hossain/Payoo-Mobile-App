@@ -1,27 +1,66 @@
 
 const validPin = 1234
+
+// function to get input value
+function inputValue (id){
+const inputFild = document.getElementById(id)
+const inputFildValue = inputFild.value
+const inputFildValuetNumber = parseInt(inputFildValue)
+return inputFildValuetNumber
+}
+
+// no converted
+function noCoverted (id){
+  const inputFild = document.getElementById(id)
+const inputFildValue = inputFild.value
+return inputFildValue
+}
+
+// function to get inner text
+function getInnerText(id){
+const element = document.getElementById(id)
+const elementValue = element.innerText
+const elementValueNumber = parseInt(elementValue)
+return elementValueNumber
+}
+
+// function to toggle
+function henlerToggle (id){
+  const forms = document.getElementsByClassName('form')
+
+   for(const form of forms){
+    form.style.display = 'none';
+ }
+ document.getElementById(id).style.display = 'block'
+ 
+}
+
+// function to set innerText
+function setInnerText (value){
+  const availableBalanceElement = document.getElementById('Available-balance')
+  availableBalanceElement.innerText = value
+}
 // add money feature
 
 document.getElementById('add-money-btn')
 .addEventListener('click',function(e){
     e.preventDefault()
     const bank =document.getElementById('bank').value
-    const accountNumber = document.getElementById('account-number').value
-   const addAmount = parseInt(document.getElementById('add-amount').value)
-const pinNumber = parseInt(document.getElementById('pin-Number').value);
-   console.log(bank,accountNumber,addAmount,pinNumber);
-   let availableBalance = parseInt( document.getElementById('Available-balance').innerText)
-
-if(accountNumber.length < 11 ){
-    alert('Pleaase provide accound number');
-    return
+const accountNumber = noCoverted('account-number')
+   const addAmount = inputValue('add-amount')
+   const pinNumber = inputValue('add-pin-number')
+let availableBalance = getInnerText('Available-balance')
+if(accountNumber.length <  11){
+alert('Please provide account number');    
+return;
 }
-if(pinNumber != validPin){
-    alert('Pleaase provide pin number')
+if(pinNumber !== validPin){
+alert('Please provide correct pin number');
      return;
 }
    const toatalNewAvailableBalance = addAmount+availableBalance
-   document.getElementById('Available-balance').innerText= toatalNewAvailableBalance;
+   console.log(toatalNewAvailableBalance);
+   setInnerText(toatalNewAvailableBalance)
 
 }) 
 
@@ -29,9 +68,9 @@ if(pinNumber != validPin){
 document.getElementById('Withdraw-btn')
 .addEventListener('click',function(e){
 e.preventDefault()
-const amount = parseInt(document.getElementById('withdraw-amount').value)
-const availableBalance = parseInt( document.getElementById('Available-balance').innerText)
-const agentNumber = document.getElementById('Agent-Number').value
+const amount = parseInt(inputValue('withdraw-amount'));
+const availableBalance = getInnerText('Available-balance')
+const agentNumber = noCoverted('Agent-Number')
 const pinNumber = document.getElementById('pin-Number').value
 if(agentNumber.length < 11){
     alert('Please provide agent number');
@@ -43,7 +82,7 @@ if(pinNumber != validPin){
      return;
 }
 const toatalNewAvailableBalance = availableBalance - amount
-document.getElementById('Available-balance').innerText = toatalNewAvailableBalance
+setInnerText(toatalNewAvailableBalance)
 })
   //  Transfer Money
 
@@ -51,9 +90,9 @@ document.getElementById('Available-balance').innerText = toatalNewAvailableBalan
   .addEventListener('click',function(e){
    e.preventDefault()
    const accoundNumbet = document.getElementById('user-account-numbe').value
-   const amount = parseInt(document.getElementById('amount-transfer').value)
+   const amount = inputValue('amount-transfer')
    const pinNumber = document.getElementById('pin-number').value
-   const availableBalance = parseInt(document.getElementById('Available-balance').innerText)
+   const availableBalance = getInnerText('Available-balance')
    if(accoundNumbet.length < 11){
     alert('Please provide agent number');
     return
@@ -64,7 +103,7 @@ if(pinNumber != validPin){
      return;
 }
  const toatalNewAvailableBalance = availableBalance - amount
- document.getElementById('Available-balance').innerText = toatalNewAvailableBalance
+ setInnerText(toatalNewAvailableBalance)
   })
 
   // Bounas section
@@ -93,16 +132,17 @@ if(pinNumber != validPin){
 
      const selectPayBank = document.getElementById('bank-bill').value
      const billerAccountNumber = document.getElementById('bill-account-number').value
-     const amountPay = parseInt(document.getElementById('amount-pay').value)
-     const PinNumber = document.getElementById('pin-number').value
-    let balenceElement = parseInt(document.getElementById('Available-balance').innerText);
+     const amountPay = inputValue('amount-pay')
+const pinNumber = document.getElementById('pin-Number').value;
+    
+    let balenceElement = getInnerText('Available-balance')
        if(billerAccountNumber.length < 11){
         
     alert('Please provide Account number');
     return
 }
 const toatalNewAvailableBalance = amountPay + balenceElement
-   document.getElementById('Available-balance').innerText= toatalNewAvailableBalance;
+   setInnerText(toatalNewAvailableBalance)
 
 if(PinNumber != validPin){
      alert('Please provide pin number')
@@ -115,38 +155,30 @@ if(PinNumber != validPin){
 // add money
 document.getElementById('add-button')
 .addEventListener('click',function(){
-  document.getElementById('Cash-out-parent').style.display='none'
-  document.getElementById('add-money-parent').style.display = 'block'
+henlerToggle('add-money-parent')
 })
 // Cash-out-button
 document.getElementById('Cash-out-button')
 .addEventListener('click',function(){
-    document.getElementById('add-money-parent').style.display = 'none'
-  document.getElementById('Cash-out-parent').style.display='block'
-  
+  henlerToggle("Cash-out-parent")
+    
 })
 // transfer-money
 document.getElementById('transfer-btutton')
 .addEventListener('click', function(){
-    document.getElementById('Cash-out-parent').style.display='none'
-  document.getElementById('add-money-parent').style.display = 'none'
-  document.getElementById('transfer-money-parent').style.display= 'block'
+  henlerToggle("transfer-money-parent")
+   
 })
 
 // bounas
 document.getElementById('bonus-button')
 .addEventListener('click', function(){
-    document.getElementById('Cash-out-parent').style.display='none'
-  document.getElementById('add-money-parent').style.display = 'none'
-  document.getElementById('transfer-money-parent').style.display= 'none'
-  document.getElementById('coupone-parent').style.display = 'block'
+   henlerToggle("coupone-parent")
+   
 })
-     pay bill 
+    //  pay bill 
 document.getElementById('pay-button')
 .addEventListener('click', function(){
-    document.getElementById('Cash-out-parent').style.display='none'
-  document.getElementById('add-money-parent').style.display = 'none'
-  document.getElementById('transfer-money-parent').style.display= 'none'
-  document.getElementById('coupone-parent').style.display = 'none'
-  document.getElementById('Pay-Bill-parent').style.display = 'block'
+  henlerToggle("Pay-Bill-parent")
+    
 })
