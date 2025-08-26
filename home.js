@@ -1,5 +1,6 @@
 
 const validPin = 1234
+const transactionData =[];
 
 // function to get input value
 function inputValue (id){
@@ -40,6 +41,19 @@ function setInnerText (value){
   const availableBalanceElement = document.getElementById('Available-balance')
   availableBalanceElement.innerText = value
 }
+
+// function button toggole hendel color
+function hendelButtonToggle(id){
+  const formsBtns = document.getElementsByClassName('form-btn')
+
+for(const formbtn of formsBtns){
+formbtn.classList.remove('border-[#0874F2]', 'bg-[#0874f20d]');
+formbtn.classList.add('border-gray-300')
+}
+document.getElementById(id).classList.remove('border-gray-300')
+document.getElementById(id).classList.add('border-[#0874F2]','bg-[#0874f20d]')
+
+}
 // add money feature
 
 document.getElementById('add-money-btn')
@@ -61,8 +75,15 @@ alert('Please provide correct pin number');
    const toatalNewAvailableBalance = addAmount+availableBalance
    console.log(toatalNewAvailableBalance);
    setInnerText(toatalNewAvailableBalance)
+const data ={
+  name:"Add Money",
+  data: new Date().toLocaleTimeString()
 
+}
+transactionData.push(data)
 }) 
+
+
 
 // cash out feature
 document.getElementById('Withdraw-btn')
@@ -83,6 +104,43 @@ if(pinNumber != validPin){
 }
 const toatalNewAvailableBalance = availableBalance - amount
 setInnerText(toatalNewAvailableBalance)
+const data ={
+  name:"Cash Oute",
+  data: new Date().toLocaleDateString()
+}
+transactionData.push(data)
+console.log(transactionData);
+})
+// transactionsection
+document.getElementById('transaction-button')
+.addEventListener('click',function(){
+const transactionContainer = document.getElementById('t-containar');
+transactionContainer.innerText = ""
+
+
+ for(const data of transactionData){
+  const div = document.createElement('div')
+  div.innerHTML = `
+             <div class=" bg-white rounded-xl p-3 flex justify-between items-center mt-3">
+            <div class="flex items-center gap-[10px]">
+              <div class="rounded-full bg-[#f4f5f7]">
+                <img src="./assets/wallet1.png" alt="" class="mx-auto">
+              </div>
+              <div class="ml-3">
+                <h1>${data.name}</h1>
+                <p>${data.date}</p>
+              </div>
+
+            </div>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+
+           </div>
+  `
+
+  console.log(transactionContainer);
+transactionContainer.appendChild(div)
+
+ }
 })
   //  Transfer Money
 
@@ -104,6 +162,12 @@ if(pinNumber != validPin){
 }
  const toatalNewAvailableBalance = availableBalance - amount
  setInnerText(toatalNewAvailableBalance)
+ const data ={
+  name:"Transfer Money",
+  data: new Date().toLocaleDateString()
+}
+transactionData.push(data)
+console.log(transactionData);
   })
 
   // Bounas section
@@ -120,6 +184,9 @@ if(pinNumber != validPin){
     balenceElement.innerText =availableBalance
     
     }
+    
+transactionData.push(data)
+console.log(transactionData);
       alert('Please provide your cuopone')
      return;
   
@@ -143,8 +210,12 @@ const pinNumber = document.getElementById('pin-Number').value;
 }
 const toatalNewAvailableBalance = amountPay + balenceElement
    setInnerText(toatalNewAvailableBalance)
+    const data ={
+  name:"pay Bill",
+  data: new Date().toLocaleDateString()
+}
 
-if(PinNumber != validPin){
+if(pinNumber != validPin){
      alert('Please provide pin number')
      return;
 }
@@ -156,17 +227,19 @@ if(PinNumber != validPin){
 document.getElementById('add-button')
 .addEventListener('click',function(){
 henlerToggle('add-money-parent')
+hendelButtonToggle('add-button')
 })
 // Cash-out-button
 document.getElementById('Cash-out-button')
 .addEventListener('click',function(){
   henlerToggle("Cash-out-parent")
-    
+    hendelButtonToggle('Cash-out-button')
 })
 // transfer-money
 document.getElementById('transfer-btutton')
 .addEventListener('click', function(){
   henlerToggle("transfer-money-parent")
+   hendelButtonToggle('transfer-btutton')
    
 })
 
@@ -174,11 +247,22 @@ document.getElementById('transfer-btutton')
 document.getElementById('bonus-button')
 .addEventListener('click', function(){
    henlerToggle("coupone-parent")
+    hendelButtonToggle('bonus-button')
    
 })
     //  pay bill 
 document.getElementById('pay-button')
 .addEventListener('click', function(){
   henlerToggle("Pay-Bill-parent")
+   hendelButtonToggle('pay-button')
+   
+    
+})
+// transaction
+document.getElementById('transaction-button')
+.addEventListener('click', function(){
+  henlerToggle("transaction-parent")
+   hendelButtonToggle('transaction-button')
+   
     
 })

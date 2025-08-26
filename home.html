@@ -51,28 +51,28 @@
         </p>
       </div>
 
-      <div class="min-h-[200px] grid grid-cols-3 gap-4 p-3">
-        <div id="add-button" class="border-2 border-gray-300 text-center p-3 rounded-xl">
+      <div class=" min-h-[200px] grid grid-cols-3 gap-4 p-3">
+        <div id="add-button" class="form-btn border-2 border-gray-300 text-center p-3 rounded-xl">
           <img class="mx-auto" src="./assets/wallet1.png" alt="" />
           <h1 class="text-[#08080880]">Add Money</h1>
         </div>
-        <div id="Cash-out-button" class="border-2 border-gray-300 text-center p-3 rounded-xl">
+        <div id="Cash-out-button" class="form-btn border-2 border-gray-300 text-center p-3 rounded-xl">
           <img class="mx-auto" src="./assets/send1.png" alt="" />
           <h1 class="text-[#08080880]">Cashout</h1>
         </div>
-        <div id="transfer-btutton" class="border-2 border-gray-300 text-center p-3 rounded-xl">
+        <div id="transfer-btutton" class="form-btn border-2 border-gray-300 text-center p-3 rounded-xl">
           <img class="mx-auto" src="./assets/money1.png" alt="" />
           <h1 class="text-[#08080880]">Transfer Money</h1>
         </div>
-        <div id="bonus-button" class="border-2 border-gray-300 text-center p-3 rounded-xl">
+        <div id="bonus-button" class="form-btn border-2 border-gray-300 text-center p-3 rounded-xl">
           <img class="mx-auto" src="./assets/bonus1.png" alt="" />
           <h1 class="text-[#08080880]">Get Bonus</h1>
         </div>
-        <div id="pay-button" class="border-2 border-gray-300 text-center p-3 rounded-xl">
+        <div id="pay-button" class="form-btn border-2 border-gray-300 text-center p-3 rounded-xl">
           <img class="mx-auto" src="./assets/purse1.png" alt="" />
           <h1 class="text-[#08080880]">Pay Bill</h1>
         </div>
-        <div class="border-2 border-gray-300 text-center p-3 rounded-xl">
+        <div id="transaction-button" class="form-btn border-2 border-gray-300 text-center p-3 rounded-xl">
           <img class="mx-auto" src="./assets/transaction1.png" alt="" />
           <h1 class="text-[#08080880]">Transactions</h1>
         </div>
@@ -271,6 +271,17 @@
           </div>
           <button id="pay-btn" type="button"class="btn bg-[#0874F2] text-white mt-5 w-full rounded-3xl">Pay Now</button>
         </form>
+      </div>
+      <!-- transactio section -->
+       <div class="form"  id="transaction-parent" style="display: none;"> 
+        
+        <div class="flex justify-between items-center">
+            <h1 class="my-5 font-bold">Transaction</h1>
+            <p class="text-[#08080880]">view All</p>
+        </div>
+         <div id="t-containar">
+           
+         </div>
       </div>
     </div>
     <script src="./home.js"></script>
